@@ -5,7 +5,7 @@ GITHUB_REPO = "https://github.com/ChoccyHobNob/EightBit-Atari-Fonts/raw/master/"
 
 with open('index.html', 'w') as f:
     print('<html>\n<head><title>Atari Fonts</title></head><body>\n', file=f)
-    fonts = [pathlib.Path(fn) for fn in glob.glob('*/*.png') if 'original' not in fn.lower()]
+    fonts = sorted([pathlib.Path(fn) for fn in glob.glob('*/*.png') if 'original' not in fn.lower()], key=lambda p: str(p)[0])
 
     for fontimg in fonts:
         fontname = str(fontimg).rstrip('-sample.png')
